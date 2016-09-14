@@ -17,30 +17,13 @@ String what = (String)request.getAttribute("sign");
 <title>617备忘录</title>
 
 <script type="text/javascript">
-
-
-
 	var fm = '<%=what%>';
 	if(fm=="notPass"){
 		alert("密码错误，请重新输入")
 		}
 
-
-
-
-
-
 function login(){
-	
-
-
-
-
-
 var th = document.form1;
-
-
-
 if(th.account.value==""){
 	alert("账号不能为空")
 	return;

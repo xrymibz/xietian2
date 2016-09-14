@@ -5,10 +5,12 @@
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="account" property="account" jdbcType="VARCHAR" />
     <result column="password" property="pwd" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
   
     <sql id="Base_Column_List" >
-    id, account, password
+    id, account, password, name,email
   </sql>
   <select id="VerifyAccount" resultMap="BaseResultMap" parameterType="me.gacl.domain.Account" >
     select 
@@ -16,6 +18,13 @@
     from account
     where account = #{account,jdbcType=VARCHAR} and password=#{pwd,jdbcType=VARCHAR}
   </select>
+  
+    <insert id="InsertAccount" parameterType="me.gacl.domain.Account" >
+    insert into account (id, account, password, 
+      name,email)
+    values (#{id,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+  </insert>
   
   
   </mapper>

@@ -10,18 +10,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <script type="text/ecmascript" src="md5.js"></script>
 <script type="text/javascript">
 	function check() {
 
 		
 		var th = document.form2;
-		var name = th.userAccount.value;
-		alert(name);
-		var hash = hex_md5(name);
-		alert("加密后的密码"+hash)
-
+		var pwd = th.userPassword.value;
+		if(th.userAccount.value==""){
+			alert("用户名不能为空")
+			return;
+		}else if(th.userPassword.value==""){
+			alert("密码不能为空")
+			return;
+		}else if(th.reuserPassword.value==""){
+			alert("确认密码不能为空")
+			return;
+		}else if(th.userName.value==""){
+			alert("姓名不能为空")
+			return;
+		}else if(th.userEmail.value==""){
+			alert("邮箱不能为空")
+			return;
+		}else if(th.userPassword.value!=th.reuserPassword.value){
+			alert("两次密码不一致");
+			return;
+		}
+		
+		
+		
+		var hash = hex_md5(pwd);
+		th.hashpwd.value=hash;		
+		th.action="<%=path%>/register/commit"
+		th.submit();
 	}
 </script>
 
@@ -34,10 +55,16 @@
 		<div align="center">
 			账户名: <input type="text" name="userAccount"> <br>
 			密&nbsp;&nbsp;&nbsp;&nbsp;码: <input type="text" name="userPassword">
-			<br> 姓&nbsp;&nbsp;&nbsp;&nbsp;名: <input type="text"
-				name="userName"> <br> 邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <input
-				type="text" name="userAge">
+			<br> 
+			确认密码: <input type="text" name="reuserPassword">
+			<br> 
+			姓&nbsp;&nbsp;&nbsp;&nbsp;名: <input type="text"
+				name="userName">
+				<br> 
+		            邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <input
+				type="text" name="userEmail">
 		</div>
+		<input type="hidden" name="hashpwd" value=""/>
 		<div align="center">
 			<input type="button" name="commit" onclick="check()" value="提交" /> <input
 				type="button" name="goback"
