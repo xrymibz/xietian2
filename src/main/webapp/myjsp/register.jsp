@@ -19,8 +19,8 @@
 		var th = document.form2;
 		var name = th.userAccount.value;
 		alert(name);
-		var form2 = hex_md5(name);
-		alert(hash)
+		var hash = hex_md5(name);
+		alert("加密后的密码"+hash)
 
 	}
 </script>
