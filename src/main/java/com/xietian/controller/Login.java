@@ -20,7 +20,7 @@ public class Login {
 		AccountServiceI accountService;
 
 		String account = request.getParameter("account");
-		String pwd = request.getParameter("pwd");
+		String pwd = request.getParameter("hashpwd");
 
 		
 		System.out.println("account  :"+account);
@@ -36,7 +36,6 @@ public class Login {
 
 
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "spring.xml", "spring-mybatis.xml" });
-
 		accountService = (AccountServiceI) ac.getBean("AccountService");
 
 		boolean isOk = accountService.VerifyAccount(user);

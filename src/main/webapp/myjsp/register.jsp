@@ -3,8 +3,7 @@
 <%
 	String path = request.getContextPath();
 	String basePatt = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-	String what = (String) request.getAttribute("sign");
+			+ path + "/";  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,9 +11,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/ecmascript" src="md5.js"></script>
 <script type="text/javascript">
+	
 	function check() {
 
-		
+	
 		var th = document.form2;
 		var pwd = th.userPassword.value;
 		if(th.userAccount.value==""){
@@ -38,7 +38,7 @@
 		}
 		
 		
-		
+
 		var hash = hex_md5(pwd);
 		th.hashpwd.value=hash;		
 		th.action="<%=path%>/register/commit"
@@ -50,13 +50,13 @@
 <title>注册界面</title>
 </head>
 <body>
-	<form name="form2" action="<%=path%>/register/commit" method="post">
+	<form name="form2" action="<%=path%>/register/commit" method="post" >
 
 		<div align="center">
 			账户名: <input type="text" name="userAccount"> <br>
-			密&nbsp;&nbsp;&nbsp;&nbsp;码: <input type="text" name="userPassword">
+			密&nbsp;&nbsp;&nbsp;&nbsp;码: <input type="password" name="userPassword">
 			<br> 
-			确认密码: <input type="text" name="reuserPassword">
+			确认密码: <input type="password" name="reuserPassword">
 			<br> 
 			姓&nbsp;&nbsp;&nbsp;&nbsp;名: <input type="text"
 				name="userName">

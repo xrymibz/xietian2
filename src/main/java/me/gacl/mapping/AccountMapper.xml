@@ -19,7 +19,14 @@
     where account = #{account,jdbcType=VARCHAR} and password=#{pwd,jdbcType=VARCHAR}
   </select>
   
-    <insert id="InsertAccount" parameterType="me.gacl.domain.Account" >
+    <select id="VerifySameAccount" resultMap="BaseResultMap" parameterType="me.gacl.domain.Account" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where account = #{account,jdbcType=VARCHAR} 
+  </select>
+  
+  <insert id="InsertAccount" parameterType="me.gacl.domain.Account" >
     insert into account (id, account, password, 
       name,email)
     values (#{id,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 

@@ -15,7 +15,7 @@ String what = (String)request.getAttribute("sign");
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>617备忘录</title>
-
+<script type="text/ecmascript" src="md5.js"></script>
 <script type="text/javascript">
 	var fm = '<%=what%>';
 	if(fm=="notPass"){
@@ -23,7 +23,9 @@ String what = (String)request.getAttribute("sign");
 		}
 
 function login(){
+	
 var th = document.form1;
+var pwd = th.pwd.value;
 if(th.account.value==""){
 	alert("账号不能为空")
 	return;
@@ -31,8 +33,11 @@ if(th.account.value==""){
 	alert("密码不能为空")
 	return;
 }
+	
+var hash = hex_md5(pwd);
+th.hashpwd.value=hash;	
+	
 th.action="<%=path%>/login/login"
-
 th.submit();
 }
 
@@ -60,7 +65,7 @@ th.submit();
 		<div align="center">  
 			<input  align="middle" type="button" name="denglu" onclick="login()"value="登录" />
 			<input  align="middle" type="button" name="logup"  onclick="javascript:location.href='<%=path%>/login/register'" value="注册" />
-
+			<input type="hidden"   name="hashpwd" value=""/>
 		</div>
 	</form>
 </body>

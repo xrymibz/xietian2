@@ -24,8 +24,11 @@
     <context:component-scan base-package="me.gacl.service" />
   
     <!-- 静态资源访问（不拦截此目录下的东西的访问） -->  
-    <mvc:resources location="/properties/"  mapping="/login/**" /> 
-  
+    
+  	<mvc:resources location="/properties/"  mapping="/afterRegister/**" /> 
+  	<mvc:resources location="/properties/"  mapping="/register/**" /> 
+ 	<mvc:resources location="/properties/"  mapping="/login/**" /> 
+ 	
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
         <property name="prefix" value="/myjsp/" />  
         <property name="suffix" value=".jsp" />  

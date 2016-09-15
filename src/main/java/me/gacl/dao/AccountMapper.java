@@ -13,9 +13,17 @@ public interface AccountMapper {
 	
 	
 	/**
+	 * 查询用户注册帐号是否重复
+	 * @param account
+	 * @return
+	 */
+	Account VerifySameAccount(Account account);
+	
+	
+	/**
 	 * 添加用户的账户密码
 	 * @param account
 	 * @return
 	 */
-	boolean InsertAccount(Account account);
+	int  InsertAccount(Account account);
 }

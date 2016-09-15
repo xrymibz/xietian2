@@ -17,11 +17,30 @@ public class AccountServiceImpl implements AccountServiceI{
 		// TODO Auto-generated method stub
 	
 //		Account user = new Account(name,pwd);
-		System.out.println(1);
+	
 		Object user = accountMapper.VerifyAccount(account);
-		System.out.println(2);
+
 		if(user!=null) return true;
 		else return false;
 	}
+	
 
+
+	public boolean InsertAccount(Account user) {
+
+		int res = accountMapper.InsertAccount(user);
+		
+
+		 
+		return false;
+	}
+
+
+
+	public boolean VerifySameAccount(Account account) {
+		Object user = accountMapper.VerifySameAccount(account);
+
+		if(user!=null) return true;
+		else return false;
+	}
 }
