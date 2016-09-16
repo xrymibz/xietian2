@@ -1,5 +1,9 @@
 package me.gacl.service;
 
+
+
+import java.util.List;
+
 import me.gacl.domain.User;
 
 public interface UserServiceI {
@@ -16,4 +20,11 @@ public interface UserServiceI {
      * @return
      */
     User getUserById(String userId);
+    
+    /**
+     * 查询所有的用户
+     * @return
+     */
+    
+    List<User> QueryAllUser();
 }

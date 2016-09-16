@@ -28,6 +28,7 @@ public class AccountServiceImpl implements AccountServiceI{
 
 	public boolean InsertAccount(Account user) {
 
+	
 		int res = accountMapper.InsertAccount(user);
 		
 
