@@ -19,7 +19,7 @@ String what = (String)request.getAttribute("sign");
 <script type="text/javascript">
 	var fm = '<%=what%>';
 	if(fm=="notPass"){
-		alert("密码错误，请重新输入")
+		alert("密码错误，请重新输入"+fm)
 		}
 
 function login(){

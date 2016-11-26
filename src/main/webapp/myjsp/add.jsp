@@ -2,6 +2,10 @@
 	pageEncoding="utf-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.modelPO.UserVO" %>	
+
+<%
+String path =request.getContextPath();
+%>
 <%List<UserVO>list = (List<UserVO>)request.getAttribute("userAll"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,6 +43,8 @@
 
 
 	</table>
+	<input  align="left" type="button" name="denglu" onclick="javascript:location.href='<%=path%>/login/login'"  value="退出" />
+
 
 </body>
 </html>
