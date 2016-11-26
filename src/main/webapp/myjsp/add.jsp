@@ -6,17 +6,50 @@
 <%
 String path =request.getContextPath();
 %>
-<%List<UserVO>list = (List<UserVO>)request.getAttribute("userAll"); %>
+<%List<UserVO>list = (List<UserVO>)request.getAttribute("userAll");
+int totalPage = (Integer)request.getAttribute("totalPage");  //總的頁面數
+int currentPage = (Integer)request.getAttribute("currentPage"); //当前页面
+int pageSize = (Integer)request.getAttribute("pageSize");;  //每页条数
+int totalNum = (Integer)request.getAttribute("totalNum");; //总的数据数量
+int startNum = currentPage*pageSize; //开始的数据序号
+int nextPage = 0;  //下一页
+int previousPage = 0; //上一页
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+
+function nextPage(){
+
+	var th = document.form2;
+	th.currentPages.value=<%=currentPage+1%>;
+	th.action="<%=path%>/add";
+		th.submit();
+}
+	
+function previousPage(){
+	alert("zzz");
+	var th = document.form2;
+	th.currentPages.value=<%=currentPage-1%>;
+	th.action="<%=path%>/add";
+		th.submit();
+}
+
+
+
+</script>
+
+
 </head>
 <body>
 
-
-	<table border="1"  width="400" align="center">
+<form name="form2" action="login" method="post">
+<input type="hidden"   name="currentPages" value=""/>
+	<table  border="1"  width="400" align="center">
 
 		<tr   id="info" align="center">
 			<td>姓名</td>
@@ -24,17 +57,17 @@ String path =request.getContextPath();
 			<td>薪水</td>
 		</tr>
 
-		<tr align="center">
+		<!--  >tr align="center">
 			<td>${user.name }</td>
 			<td>${user.birthday }</td>
 			<td>${user.salary }</td>
-		</tr>
+		</tr-->
 		
-		<%for (UserVO i :list) { %>
+		<%for (int i=startNum ;i < startNum+pageSize;i++) { %>
 		<tr align="center">
-			<td><%=i.getName() %></td>
-			<td><%=i.getBirthday() %></td>
-			<td><%=i.getSalary() %></td>
+		   	<td><%=list.get(i).getName()  %></td>
+			<td><%=list.get(i).getBirthday() %></td>
+			<td><%=list.get(i).getSalary() %></td>
 		
 		</tr>
 		<%} %>
@@ -43,8 +76,11 @@ String path =request.getContextPath();
 
 
 	</table>
-	<input  align="left" type="button" name="denglu" onclick="javascript:location.href='<%=path%>/login/login'"  value="退出" />
 
-
+	</form>
+		<input  align="left" type="button" name="denglu" onclick="javascript:location.href='<%=path%>/login/login'"  value="退出" />
+	<input  align="left" type="button" name=previousPage onclick="previousPage()"  value="上一页" />
+	<input  align="left" type="button" name="nextPage" onclick="nextPage()"  value="下一页" />
+	
 </body>
 </html>
