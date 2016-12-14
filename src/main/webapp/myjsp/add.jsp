@@ -19,7 +19,7 @@ int previousPage = 0; //上一页
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>备忘录</title>
 <script type="text/javascript">
 
 
@@ -32,7 +32,6 @@ function nextPage(){
 }
 	
 function previousPage(){
-	alert("zzz");
 	var th = document.form2;
 	th.currentPages.value=<%=currentPage-1%>;
 	th.action="<%=path%>/add";
@@ -49,12 +48,14 @@ function previousPage(){
 
 <form name="form2" action="login" method="post">
 <input type="hidden"   name="currentPages" value=""/>
-	<table  border="1"  width="400" align="center">
+<h2 align="center">备忘录</h2>>
+<div class = "container">
+	<table  class="table table-bordered" border="1"  width="400" align="center">
 
 		<tr   id="info" align="center">
 			<td>姓名</td>
 			<td>生日</td>
-			<td>薪水</td>
+			<td>今年</td>
 		</tr>
 
 		<!--  >tr align="center">
@@ -76,11 +77,12 @@ function previousPage(){
 
 
 	</table>
-
+</div>
 	</form>
-		<input  align="left" type="button" name="denglu" onclick="javascript:location.href='<%=path%>/login/login'"  value="退出" />
-	<input  align="left" type="button" name=previousPage onclick="previousPage()"  value="上一页" />
-	<input  align="left" type="button" name="nextPage" onclick="nextPage()"  value="下一页" />
-	
+	<div align="center">
+	<input class = "btn btn-default" align="middle" type="button" name="denglu" onclick="javascript:location.href='<%=path%>/login/login'"  value="退出" />
+	<input  class = "btn btn-default" align="middle" type="button" name=previousPage onclick="previousPage()"  value="上一页" />
+	<input  class = "btn btn-default" align="middle" type="button" name="nextPage" onclick="nextPage()"  value="下一页" />
+	</div>
 </body>
 </html>

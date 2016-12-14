@@ -5,14 +5,22 @@
 
 
 <%
-String path =request.getContextPath();
-String basePatt = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String what = (String)request.getAttribute("sign");  
-
+	String path = request.getContextPath();
+	String basePatt = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	String what = (String) request.getAttribute("sign");
 %>
 
 <html>
 <head>
+<meta charset="utf-8">
+<title>Bootstrap 617备忘录</title>
+<link rel="stylesheet"
+	href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>617备忘录</title>
 <script type="text/ecmascript" src="/xietian2/properties/md5.js"></script>
@@ -38,35 +46,49 @@ var hash = hex_md5(pwd);
 th.hashpwd.value=hash;	
 	
 th.action="<%=path%>/login/login"
-th.submit();
-}
-
-
+		th.submit();
+	}
 </script>
 
 </head>
 <body>
 
 
-	欢迎登录617备忘录
+	<div class="text-primary" >
+
+		<h1 align="center">欢迎登录617备忘录</h1>
+	</div>
+
+<div class="container">
+
+<div class = "row">
+<div class = "col-sm-4 col-sm-offset-4 form-box">
 	<form name="form1" action="login" method="post">
-		<table border="1" width="300" id="info" align="center">
 
-			<tr align="center">
-				<td>账户</td>
-				<td><input type="text" name="account" /></td>
-			</tr>
 
-			<tr align="center">
-				<td>密码</td>
-				<td><input type="password" name="pwd" /></td>
-			</tr>
-		</table>
-		<div align="center">  
-			<input  align="middle" type="button" name="denglu" onclick="login()"value="登录" />
-			<input  align="middle" type="button" name="logup"  onclick="javascript:location.href='<%=path%>/login/register'" value="注册" />
-			<input type="hidden"   name="hashpwd" value=""/>
+
+		<div class="input-group" >
+			<span class="input-group-addon">账号</span> <input type="text"
+				name="account" class="form-control">
+		</div>
+		<div>
+		
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">密码</span> <input type="password"
+				name="pwd" class="form-control">
+		</div>
+
+		<div align="center">
+			<input align="middle" class="btn btn-default" type="button"
+				name="denglu" onclick="login()" value="登录" /> <input align="middle"
+				class="btn btn-default" type="button" name="logup"
+				onclick="javascript:location.href='<%=path%>/login/register'"
+				value="注册" /> <input type="hidden" name="hashpwd" value="" />
 		</div>
 	</form>
+	</div>
+	</div>
+	</div>
 </body>
 </html>
