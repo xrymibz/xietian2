@@ -68,6 +68,10 @@ public class MyController {
 		  ModelAndView modelAndView = new ModelAndView("add");
 		  modelAndView.addObject("user", userVO);
 		  modelAndView.addObject("userAll", nice2);
+		  
+		  for(UserVO i : nice2){
+			  System.out.println(i.getName()+i.getBirthday()+i.getSalary());
+		  }
 		  modelAndView.addObject("totalNum", totalNum);
 		  modelAndView.addObject("totalPage", totalPage);
 		  modelAndView.addObject("pageSize", pageSize);
