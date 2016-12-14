@@ -45,12 +45,13 @@ public class Login {
 
 			// return "add";
 			return "redirect:/add";
-		} else {
+		} else if(user.getAccount()!=null&&user.getPwd()!=null) {
 
 			System.out.println("not ok");
 			model.addAttribute("sign", "notPass");
 			return "login";
-
+		}else{
+			return "login";
 		}
 	}
 
