@@ -56,7 +56,7 @@ public class User {
     	}
     	if(getUserBirthday()!=null){
     		
-    		SimpleDateFormat SDF = new SimpleDateFormat("yyyy-mm-dd");
+    		SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
     		user.setBirthday(SDF.format(getUserBirthday()));
     	}
     	if(getUserSalary()!=null){
