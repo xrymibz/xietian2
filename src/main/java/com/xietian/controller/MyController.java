@@ -39,6 +39,14 @@ public class MyController {
 	
 
 		System.out.println(currentPage);
+		String currentPages = request.getParameter("currentPages");
+		if(currentPages!=null){
+		currentPage = Integer.parseInt(currentPages);
+		}
+		if((currentPage+1)*pageSize>totalNum){
+			currentPage--;
+		}
+		
 		UserServiceI userService;
 
 		  ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"spring.xml","spring-mybatis.xml"});
@@ -48,29 +56,27 @@ public class MyController {
 		  
 		
 		  List<User> nice = userService.QueryAllUser();
+		  System.out.println(nice.get(0).getUserName()+"nice");
 		  List<UserVO> nice2 = new ArrayList<UserVO>();
 		  for(User i:nice){
 			  nice2.add(i.toUserVO(null));
 		  }
-		totalNum = nice2.size();
 		totalPage = (totalNum%pageSize==0)?totalNum/pageSize:totalNum/pageSize+1;
 		
-		String currentPages = request.getParameter("currentPages");
-		if(currentPages!=null){
-		currentPage = Integer.parseInt(currentPages);
-		}
-		if((currentPage+1)*pageSize>totalNum){
-			currentPage--;
-		}
+
 		  
 		  ModelAndView modelAndView = new ModelAndView("add");
 		  modelAndView.addObject("user", userVO);
 		  modelAndView.addObject("userAll", nice2);
+		  
+		  for(UserVO i : nice2){
+			  System.out.println(i.getName()+i.getBirthday()+i.getSalary());
+		  }
 		  modelAndView.addObject("totalNum", totalNum);
 		  modelAndView.addObject("totalPage", totalPage);
 		  modelAndView.addObject("pageSize", pageSize);
 		  modelAndView.addObject("currentPage", currentPage);
-		  
+	
 	
 		return modelAndView;
 	}
