@@ -7,18 +7,7 @@ public class Account {
 	private String pwd;
 	private String name;
 	private String email;
-	
-	
-//	public Account(String account,String pwd){
-//		this.account = account;
-//		this.pwd = pwd;
-//	}
-//	public Account(String id,String account,String pwd){
-//		this.id = id;
-//		this.account = account;
-//		this.pwd = pwd;
-//	}
-	
+
 	public Account(String id,String account,String pwd,String name,String email){
 		this.id =id;
 		this.account =account;
