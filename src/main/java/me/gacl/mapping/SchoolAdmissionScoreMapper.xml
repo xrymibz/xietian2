@@ -10,8 +10,8 @@
     <result column="max_score" property="maxScore" jdbcType="VARCHAR" />
     <result column="average_score" property="averageScore" jdbcType="VARCHAR" />
     <result column="min_score" property="minScore" jdbcType="VARCHAR" />
-    <result column="gmt_created" property="gmtCreated" jdbcType="java.sql.Date" />
-    <result column="gmt_modified" property="gmtModified" jdbcType="java.sql.Date" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="DATE" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
 
   </resultMap>
 

@@ -2,7 +2,6 @@ package com.acquireData;
 
 import me.gacl.domain.SchoolAdmissionScore;
 import me.gacl.service.ScoreService;
-import org.dom4j.Document;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,7 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class AcquireSchoolData {
 
-  private Document document;
+//  private Document document;
 
   public static void main(String args[]){
 
