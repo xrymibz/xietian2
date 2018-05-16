@@ -22,9 +22,9 @@ public class AcquireSchoolData {
     ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "spring.xml", "spring-mybatis.xml" });
     ScoreService scoreService = (ScoreService) ac.getBean("scoreService");
     SchoolAdmissionScore schoolAdmissionScore = new SchoolAdmissionScore();
-    schoolAdmissionScore.setSchoolName("西安电子科技大学");
     schoolAdmissionScore.setSchoolCode("99");
     schoolAdmissionScore.setProvince("四川");
+    schoolAdmissionScore.setYear("2008");
     scoreService.insertSchoolAdmissionScore(schoolAdmissionScore);
 
 

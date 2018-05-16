@@ -1,6 +1,11 @@
-C:\Users\Administrator\workspace\xietian2\src\main\java\me\gacl\dao\UserMapper.java
-C:\Users\Administrator\workspace\xietian2\src\main\java\com\xietian\controller\MyController.java
-C:\Users\Administrator\workspace\xietian2\src\main\java\me\gacl\service\impl\UserServiceImpl.java
-C:\Users\Administrator\workspace\xietian2\src\main\java\me\gacl\domain\User.java
-C:\Users\Administrator\workspace\xietian2\src\main\java\me\gacl\service\UserServiceI.java
-C:\Users\Administrator\workspace\xietian2\src\main\java\com\xietian\controller\test.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\me\gacl\domain\SchoolAdmissionScore.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\com\acquireData\HttpClient4.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\me\gacl\dao\SchoolAdmissionScoreMapper.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\com\acquireData\AcquireSchoolData.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\me\gacl\domain\User.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\com\modelPO\SchoolAdmissionScorePO.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\com\modelPO\UserVO.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\me\gacl\service\ScoreService.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\me\gacl\service\impl\ScoreServiceImpl.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\com\util\UUIDProvider.java
+C:\Users\xrymi\Desktop\GK\xietian22\src\main\java\me\gacl\domain\Account.java

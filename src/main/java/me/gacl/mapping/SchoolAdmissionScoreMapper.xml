@@ -23,7 +23,8 @@
     select
     <include refid="Base_Column_List" />
     from max_score,average_score,min_score
-    where school_name = #{school_name,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} and province = #{province.jdbcType=VARCHAR}
+    where school_name = #{school_name,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} an
+    d province = #{province.jdbcType=VARCHAR}
   </select>
 
   <insert id="insertSchoolAdmissionScore" parameterType="me.gacl.domain.SchoolAdmissionScore" >
