@@ -1,6 +1,8 @@
 package me.gacl.service.impl;
 
+import java.util.List;
 import me.gacl.dao.SchoolAdmissionScoreMapper;
+import me.gacl.dao.SchoolCodeMapper;
 import me.gacl.domain.SchoolAdmissionScore;
 import me.gacl.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class ScoreServiceImpl implements ScoreService {
   public SchoolAdmissionScore verifyScore(SchoolAdmissionScore schoolAdmissionScore) {
 
 
-    SchoolAdmissionScore score = (SchoolAdmissionScore)schoolAdmissionScoreMapper.verifyScore(schoolAdmissionScore);
+    SchoolAdmissionScore score = schoolAdmissionScoreMapper.verifyScore(schoolAdmissionScore);
 
     return score;
   }
@@ -35,4 +37,24 @@ public class ScoreServiceImpl implements ScoreService {
     return res > 0;
 
   }
+
+  public List<SchoolAdmissionScore> selectSchoolsByAvegareScore(String province, String year,
+      int maxScore, int minScore) {
+   SchoolAdmissionScore  schoolAdmissionScore = new SchoolAdmissionScore();
+    schoolAdmissionScore.setProvince(province);
+    schoolAdmissionScore.setYear(year);
+    return schoolAdmissionScoreMapper.selectSchoolsByAverageScore(province,year,maxScore,minScore);
+
+  }
+
+  public List<SchoolAdmissionScore> selectSchoolsByMinScore(String province, String year,
+      int maxScore, int minScore) {
+    SchoolAdmissionScore  schoolAdmissionScore = new SchoolAdmissionScore();
+    schoolAdmissionScore.setProvince(province);
+    schoolAdmissionScore.setYear(year);
+    return schoolAdmissionScoreMapper.selectSchoolsByMinScore(province,year,maxScore,minScore);
+
+  }
+
+
 }

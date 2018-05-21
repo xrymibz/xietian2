@@ -7,29 +7,39 @@
     <result column="school_code" property="schoolCode" jdbcType="VARCHAR" />
     <result column="year" property="year" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
-    <result column="max_score" property="maxScore" jdbcType="VARCHAR" />
-    <result column="average_score" property="averageScore" jdbcType="VARCHAR" />
-    <result column="min_score" property="minScore" jdbcType="VARCHAR" />
+    <result column="batch" property="batch" jdbcType="VARCHAR" />
+    <result column="max_score" property="maxScore" jdbcType="INTEGER" />
+    <result column="average_score" property="averageScore" jdbcType="INTEGER" />
+    <result column="min_score" property="minScore" jdbcType="INTEGER" />
     <result column="gmt_created" property="gmtCreated" jdbcType="DATE" />
     <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
 
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, school_name, year, province,max_score,average_score,min_score
+    school_name, year, province,max_score,average_score,min_score
   </sql>
 
   <select id="verifyScore" resultMap="BaseResultMap" parameterType="me.gacl.domain.SchoolAdmissionScore" >
     select
     <include refid="Base_Column_List" />
-    from max_score,average_score,min_score
+    from school_admission_score
     where school_name = #{school_name,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} an
     d province = #{province.jdbcType=VARCHAR}
   </select>
 
+  <select id="selectSchoolsByAverageScore"  resultMap = "BaseResultMap" >
+    select * from school_admission_score where province = #{province,jdbcType=VARCHAR} and year =  #{year,jdbcType=VARCHAR} and average_score &gt;=  #{minScore} and average_score &lt;=  #{maxScore}
+  </select>
+
+
+  <select id="selectSchoolsByMinScore"  resultMap = "BaseResultMap" >
+    select * from school_admission_score where province = #{province,jdbcType=VARCHAR} and year =  #{year,jdbcType=VARCHAR} and min_score &gt;=  #{minScore} and min_score &lt;=  #{maxScore}
+  </select>
+
   <insert id="insertSchoolAdmissionScore" parameterType="me.gacl.domain.SchoolAdmissionScore" >
-    insert into school_admission_score (school_name, year,province,max_score,average_score,min_score,gmt_created,gmt_modified)
-    values (#{school_name,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR},#{province,jdbcType=VARCHAR}, #{max_score,jdbcType=VARCHAR},#{average_score,jdbcType=VARCHAR},#{min_score,jdbcType=VARCHAR},now(),now())
+    insert into school_admission_score (school_name,school_code, year,province,max_score,average_score,min_score,batch,gmt_created,gmt_modified)
+    values (#{schoolName,jdbcType=VARCHAR},#{schoolCode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR},#{province,jdbcType=VARCHAR}, #{maxScore,jdbcType=INTEGER},#{averageScore,jdbcType=INTEGER},#{minScore,jdbcType=INTEGER},#{batch,jdbcType=VARCHAR},now(),now())
   </insert>
 
 

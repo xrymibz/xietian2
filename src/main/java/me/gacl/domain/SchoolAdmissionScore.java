@@ -10,6 +10,8 @@ import java.util.Date;
  * Time: 7:28
  */
 public class SchoolAdmissionScore {
+
+  private String id;
   /** 学校名称 */
   private String schoolName;
   /** 学校代码 */
@@ -19,21 +21,23 @@ public class SchoolAdmissionScore {
   /** 省份 */
   private String province;
   /** 最高录取分数 */
-  private String maxScore;
+  private int maxScore;
   /** 平均录取分数 */
-  private String averageScore;
+  private int averageScore;
   /** 最低录取分数 */
-  private String minScore;
+  private int minScore;
   /** 创建时间 */
   private Date gmtCreated;
   /** 修改时间 */
   private Date gmtModified;
+  /** 批次 */
+  private String batch;
 
   public SchoolAdmissionScore() {
   }
 
   public SchoolAdmissionScore(String schoolName, String schoolCode, String year,
-      String province, String maxScore, String averageScore, String minScore) {
+      String province, int maxScore, int averageScore, int minScore) {
     this.schoolName = schoolName;
     this.schoolCode = schoolCode;
     this.year = year;
@@ -75,27 +79,27 @@ public class SchoolAdmissionScore {
     this.province = province;
   }
 
-  public String getMaxScore() {
+  public int getMaxScore() {
     return maxScore;
   }
 
-  public void setMaxScore(String maxScore) {
+  public void setMaxScore(int maxScore) {
     this.maxScore = maxScore;
   }
 
-  public String getAverageScore() {
+  public int getAverageScore() {
     return averageScore;
   }
 
-  public void setAverageScore(String averageScore) {
+  public void setAverageScore(int averageScore) {
     this.averageScore = averageScore;
   }
 
-  public String getMinScore() {
+  public int getMinScore() {
     return minScore;
   }
 
-  public void setMinScore(String minScore) {
+  public void setMinScore(int minScore) {
     this.minScore = minScore;
   }
 
@@ -113,5 +117,21 @@ public class SchoolAdmissionScore {
 
   public void setGmtModified(Date gmtModified) {
     this.gmtModified = gmtModified;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getBatch() {
+    return batch;
+  }
+
+  public void setBatch(String batch) {
+    this.batch = batch;
   }
 }

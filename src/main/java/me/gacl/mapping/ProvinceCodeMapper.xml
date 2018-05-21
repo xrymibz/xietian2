@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.gacl.dao.ProvinceCodeMapper" >
+  <resultMap id="BaseResultMap" type="me.gacl.domain.ProvinceCode" >
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    province_name,province_code
+  </sql>
+
+  <select id="verifyProvince" resultMap="BaseResultMap" parameterType="me.gacl.domain.SchoolAdmissionScore" >
+    select
+    <include refid="Base_Column_List" />
+    from province_code
+    where province_code = #{provinceCode,jdbcType=VARCHAR}
+  </select>
+
+  <select id="verifyAllProvinces"  resultMap = "BaseResultMap" parameterType="me.gacl.domain.SchoolAdmissionScore" >
+    select * from province_code
+  </select>
+
+
+</mapper>
