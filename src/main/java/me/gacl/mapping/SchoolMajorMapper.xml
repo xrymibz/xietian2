@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.gacl.dao.SchoolMajorMapper" >
+  <resultMap id="BaseResultMap" type="me.gacl.domain.SchoolMajor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="school_name" property="schoolName" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="batch" property="batch" jdbcType="VARCHAR" />
+    <result column="max_value" property="maxValue" jdbcType="INTEGER" />
+    <result column="average_value" property="averageValue" jdbcType="INTEGER" />
+    <result column="min_value" property="minValue" jdbcType="INTEGER" />
+
+
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    school_name,major, year, province,max_score,average_score,min_score
+  </sql>
+
+  <select id="verifyMajor" resultMap="BaseResultMap" parameterType="me.gacl.domain.SchoolAdmissionScore" >
+    select
+    <include refid="Base_Column_List" />
+    from school_admission_score
+    where school_name = #{school_name,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} an
+    d province = #{province.jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectMajorsByAverageScore"  resultMap = "BaseResultMap" >
+    select * from school_major where province = #{province,jdbcType=VARCHAR} and year =  #{year,jdbcType=VARCHAR} and average_score &gt;=  #{minScore} and average_score &lt;=  #{maxScore}
+  </select>
+
+
+  <select id="selectMajorsByMinScore"  resultMap = "BaseResultMap" >
+    select * from school_major where province = #{province,jdbcType=VARCHAR} and year =  #{year,jdbcType=VARCHAR} and min_score &gt;=  #{minScore} and min_score &lt;=  #{maxScore}
+  </select>
+
+  <insert id="insertSchoolMajor" parameterType="me.gacl.domain.SchoolAdmissionScore" >
+    insert into school_major (school_name,province, major,category,batch,min_value,average_value,max_value,year)
+    values (#{schoolName,jdbcType=VARCHAR},#{province,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{batch,jdbcType=VARCHAR}, #{minValue,jdbcType=INTEGER},#{averageValue,jdbcType=INTEGER},#{maxValue,jdbcType=INTEGER},#{year,jdbcType=VARCHAR})
+  </insert>
+
+
+</mapper>
