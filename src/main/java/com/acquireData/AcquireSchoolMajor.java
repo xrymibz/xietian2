@@ -51,7 +51,7 @@ public class AcquireSchoolMajor {
 
     //  获取学校代码
     System.out.println("-----获取学校代码-----");
-    for (int i = 37; i < 100; i++) {
+    for (int i = 133; i < 200; i++) {
       String schoolCode = i + "";
       SchoolCode school = new SchoolCode();
       school.setSchoolCode(schoolCode);
@@ -81,9 +81,11 @@ public class AcquireSchoolMajor {
           System.out.println(
               "访问开始 ：" + provinceCode + "  " + provinceName + "  " + schoolCode + "  "
                   + schoolName);
-          String url = "https://gkcx.eol.cn/commonXML/schoolSpecialPoint/schoolSpecialPoint"+i+"_"+j+"_"+k+".xml";
-          System.out.println("访问完成 ：" + provinceCode + "  " + provinceName);
+          String url =
+              "https://gkcx.eol.cn/commonXML/schoolSpecialPoint/schoolSpecialPoint" + i + "_" + j
+                  + "_" + k + ".xml";
           String xmlStr = HttpClient4.doGet(url);
+          System.out.println("访问完成 ：" + provinceCode + "  " + provinceName);
           if (xmlStr.indexOf("高考") > 0 || xmlStr.indexOf("错误") > 0) {
             //网页错了，过滤
             System.out.println(
@@ -105,7 +107,6 @@ public class AcquireSchoolMajor {
               String major = element.element("specialname").getStringValue();
               String batch = element.element("pc").getStringValue();
 
-
               int maxScore = string2int(element.element("maxfs").getStringValue());
               int avgScore = string2int(element.element("varfs").getStringValue());
               int minScore = string2int(element.element("minfs").getStringValue());
@@ -122,13 +123,7 @@ public class AcquireSchoolMajor {
               schoolMajor.setBatch(batch);
 
               boolean res = schoolMajorService.insertSchoolMajor(schoolMajor);
-              if (res) {
-                System.out
-                    .println("插入成功,学校代码 ： " + schoolMajor.getSchoolName() +"专业 : " + schoolMajor.getMajor());
-                System.out.printf(schoolMajor.getSchoolName() + ", "
-                    + schoolMajor.getYear() + ", "
-                    + schoolMajor.getProvince());
-              } else {
+              if (!res) {
                 System.out
                     .println("插入失败,学校代码 ： " + schoolMajor.getSchoolName());
                 System.out.printf(schoolMajor.getSchoolName() + ", "

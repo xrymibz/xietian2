@@ -24,29 +24,41 @@ public class SchoolMajorServiceImpl implements SchoolMajorService {
   public SchoolMajor verifyScore(SchoolMajor schoolMajor) {
     SchoolMajor major = schoolMajorMapper.verifyMajor(schoolMajor);
 
-    return schoolMajor;
+    return major;
   }
 
   public boolean insertSchoolMajor(SchoolMajor schoolMajor) {
-    int res = schoolMajorMapper.insertSchoolMajor(schoolMajor);
 
-    return res > 0;
+    //幂等校验
+    if (verifyScore(schoolMajor) != null) {
+      System.out.printf("该数据已经存在，跳过存储  " + schoolMajor.toString());
+      return true;
+    }else{
+      int  res = schoolMajorMapper.insertSchoolMajor(schoolMajor);
+      System.out
+          .println("插入成功,学校代码 ： " + schoolMajor.getSchoolName() +"专业 : " + schoolMajor.getMajor());
+      System.out.printf(schoolMajor.getSchoolName() + ", "
+          + schoolMajor.getYear() + ", "
+          + schoolMajor.getProvince());
+      return res > 0;
+    }
 
   }
 
   public List<SchoolMajor> selectSchoolsByAvegareScore(String schoolName, String province,
       String year, int maxScore, int minScore) {
-    SchoolAdmissionScore  schoolAdmissionScore = new SchoolAdmissionScore();
+    SchoolAdmissionScore schoolAdmissionScore = new SchoolAdmissionScore();
     schoolAdmissionScore.setProvince(province);
     schoolAdmissionScore.setYear(year);
-    return schoolMajorMapper.selectMajorsByAverageScore(schoolName,province,year,maxScore,minScore);
+    return schoolMajorMapper
+        .selectMajorsByAverageScore(schoolName, province, year, maxScore, minScore);
   }
 
   public List<SchoolMajor> selectSchoolsByMinScore(String schoolName, String province, String year,
       int maxScore, int minScore) {
-    SchoolAdmissionScore  schoolAdmissionScore = new SchoolAdmissionScore();
+    SchoolAdmissionScore schoolAdmissionScore = new SchoolAdmissionScore();
     schoolAdmissionScore.setProvince(province);
     schoolAdmissionScore.setYear(year);
-    return schoolMajorMapper.selectMajorsByMinScore(schoolName,province,year,maxScore,minScore);
+    return schoolMajorMapper.selectMajorsByMinScore(schoolName, province, year, maxScore, minScore);
   }
 }

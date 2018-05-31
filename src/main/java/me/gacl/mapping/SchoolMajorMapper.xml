@@ -16,15 +16,14 @@
   </resultMap>
 
   <sql id="Base_Column_List" >
-    school_name,major, year, province,max_score,average_score,min_score
+    school_name,major, year
   </sql>
 
   <select id="verifyMajor" resultMap="BaseResultMap" parameterType="me.gacl.domain.SchoolAdmissionScore" >
     select
     <include refid="Base_Column_List" />
-    from school_admission_score
-    where school_name = #{school_name,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} an
-    d province = #{province.jdbcType=VARCHAR}
+    from school_major
+    where school_name = #{schoolName,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} and province = #{province,jdbcType=VARCHAR}and year = #{year,jdbcType=VARCHAR} and batch = #{batch,jdbcType=VARCHAR} and category = #{category,jdbcType=VARCHAR}
   </select>
 
   <select id="selectMajorsByAverageScore"  resultMap = "BaseResultMap" >

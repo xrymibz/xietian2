@@ -31,6 +31,21 @@ public class SchoolMajor {
   /** 年份 */
   private String year;
 
+  @Override
+  public String toString() {
+    return "SchoolMajor{" +
+        "id=" + id +
+        ", schoolName='" + schoolName + '\'' +
+        ", province='" + province + '\'' +
+        ", major='" + major + '\'' +
+        ", category='" + category + '\'' +
+        ", batch='" + batch + '\'' +
+        ", maxValue=" + maxValue +
+        ", averageValue=" + averageValue +
+        ", minValue=" + minValue +
+        ", year='" + year + '\'' +
+        '}';
+  }
 
   public int getId() {
     return id;
