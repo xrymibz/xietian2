@@ -19,11 +19,11 @@
     school_name,major, year
   </sql>
 
-  <select id="verifyMajor" resultMap="BaseResultMap" parameterType="me.gacl.domain.SchoolAdmissionScore" >
+  <select id="verifyMajor" resultMap="BaseResultMap" parameterType="me.gacl.domain.SchoolMajor" >
     select
     <include refid="Base_Column_List" />
     from school_major
-    where school_name = #{schoolName,jdbcType=VARCHAR} and year=#{year,jdbcType=VARCHAR} and province = #{province,jdbcType=VARCHAR}and year = #{year,jdbcType=VARCHAR} and batch = #{batch,jdbcType=VARCHAR} and category = #{category,jdbcType=VARCHAR}
+    where school_name = #{schoolName,jdbcType=VARCHAR} and year = #{year,jdbcType=VARCHAR} and province = #{province,jdbcType=VARCHAR} and batch = #{batch,jdbcType=VARCHAR} and category = #{category,jdbcType=VARCHAR} and major =  #{major,jdbcType=VARCHAR}
   </select>
 
   <select id="selectMajorsByAverageScore"  resultMap = "BaseResultMap" >
@@ -35,7 +35,7 @@
     select * from school_major where province = #{province,jdbcType=VARCHAR} and year =  #{year,jdbcType=VARCHAR} and min_score &gt;=  #{minScore} and min_score &lt;=  #{maxScore}
   </select>
 
-  <insert id="insertSchoolMajor" parameterType="me.gacl.domain.SchoolAdmissionScore" >
+  <insert id="insertSchoolMajor" parameterType="me.gacl.domain.SchoolMajor" >
     insert into school_major (school_name,province, major,category,batch,min_value,average_value,max_value,year)
     values (#{schoolName,jdbcType=VARCHAR},#{province,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR},#{category,jdbcType=VARCHAR},#{batch,jdbcType=VARCHAR}, #{minValue,jdbcType=INTEGER},#{averageValue,jdbcType=INTEGER},#{maxValue,jdbcType=INTEGER},#{year,jdbcType=VARCHAR})
   </insert>

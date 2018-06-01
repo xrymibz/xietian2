@@ -51,7 +51,7 @@ public class AcquireSchoolMajor {
 
     //  获取学校代码
     System.out.println("-----获取学校代码-----");
-    for (int i = 133; i < 200; i++) {
+    for (int i =200; i < 300; i++) {
       String schoolCode = i + "";
       SchoolCode school = new SchoolCode();
       school.setSchoolCode(schoolCode);
